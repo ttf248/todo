@@ -66,6 +66,15 @@ export function useTodos() {
     );
   };
 
+  const updateTodoText = (id: string, text: string) => {
+    if (!text.trim()) return;
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, text: text.trim() } : todo
+      )
+    );
+  };
+
   return {
     todos,
     stats,
@@ -73,5 +82,6 @@ export function useTodos() {
     toggleTodo,
     deleteTodo,
     updateTodoPriority,
+    updateTodoText,
   };
 }

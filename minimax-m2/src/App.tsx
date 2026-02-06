@@ -9,7 +9,7 @@ import { FilterStatus, FilterPriority } from './types/filter';
 import './App.css';
 
 function App() {
-  const { todos, stats, addTodo, toggleTodo, deleteTodo, updateTodoPriority } = useTodos();
+  const { todos, stats, addTodo, toggleTodo, deleteTodo, updateTodoPriority, updateTodoText } = useTodos();
   const [statusFilter, setStatusFilter] = useState<FilterStatus>('all');
   const [priorityFilter, setPriorityFilter] = useState<FilterPriority>('all');
 
@@ -42,6 +42,7 @@ function App() {
         onToggle={toggleTodo}
         onDelete={deleteTodo}
         onUpdatePriority={updateTodoPriority}
+        onUpdateText={updateTodoText}
       />
     </div>
   );

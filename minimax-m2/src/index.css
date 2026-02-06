@@ -230,6 +230,30 @@ h1 {
   font-weight: bold;
   color: var(--color-text);
   word-break: break-all;
+  cursor: pointer;
+}
+
+.todo-text:hover {
+  background: var(--color-warning);
+  padding: 2px 4px;
+  margin: -2px -4px;
+}
+
+.todo-text-edit {
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: var(--font-main);
+  padding: 8px 12px;
+  border: var(--border-width) solid var(--color-border);
+  background: white;
+  box-shadow: 3px 3px 0 var(--color-border);
+  outline: none;
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-text-edit:focus {
+  background: #e0f7fa;
 }
 
 /* Priority Select in Item */
@@ -359,6 +383,47 @@ h1 {
 .delete-btn:active {
   transform: translate(3px, 3px);
   box-shadow: none;
+}
+
+/* Todo Actions */
+.todo-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Edit Button */
+.edit-btn {
+  width: 40px;
+  height: 40px;
+  border: var(--border-width) solid var(--color-border);
+  background: var(--color-accent);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--color-border);
+  transition: all 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-btn:hover:not(:disabled) {
+  background: #e65100;
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--color-border);
+}
+
+.edit-btn:active:not(:disabled) {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+
+.edit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* Empty State Styles */

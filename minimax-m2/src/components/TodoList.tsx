@@ -10,9 +10,10 @@ interface TodoListProps {
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
   onUpdatePriority: (id: string, priority: Priority) => void;
+  onUpdateText: (id: string, text: string) => void;
 }
 
-export function TodoList({ todos, statusFilter, priorityFilter, onToggle, onDelete, onUpdatePriority }: TodoListProps) {
+export function TodoList({ todos, statusFilter, priorityFilter, onToggle, onDelete, onUpdatePriority, onUpdateText }: TodoListProps) {
   if (todos.length === 0) {
     return (
       <EmptyState statusFilter={statusFilter} priorityFilter={priorityFilter} />
@@ -28,6 +29,7 @@ export function TodoList({ todos, statusFilter, priorityFilter, onToggle, onDele
           onToggle={onToggle}
           onDelete={onDelete}
           onUpdatePriority={onUpdatePriority}
+          onUpdateText={onUpdateText}
         />
       ))}
     </ul>
