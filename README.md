@@ -44,6 +44,10 @@
 - `/skills` 让大模型主动识别并调用对应技能，也可主动输入命令唤起
 - `/subagent` 定义的逻辑类似 skills，但不会共享当前会话的上下文
 
+官方 skills 推荐：[https://github.com/anthropics/skills](https://github.com/anthropics/skills)
+
+`/plugin marketplace add anthropics/skills` 然后进去浏览选择你需要的 skills 即可
+
 ## 技术栈
 
 - React + TypeScript + Vite
