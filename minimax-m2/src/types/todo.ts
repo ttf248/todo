@@ -12,4 +12,7 @@ export interface TodoStats {
   total: number;
   completed: number;
   pending: number;
+  highPriority: number;
+  mediumPriority: number;
+  lowPriority: number;
 }

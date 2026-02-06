@@ -16,6 +16,15 @@ export function TodoStatsView({ stats }: TodoStatsProps) {
       <div className="stat-item">
         待完成: <span>{stats.pending}</span>
       </div>
+      <div className="stat-item priority-stat-high">
+        高: <span>{stats.highPriority}</span>
+      </div>
+      <div className="stat-item priority-stat-medium">
+        中: <span>{stats.mediumPriority}</span>
+      </div>
+      <div className="stat-item priority-stat-low">
+        低: <span>{stats.lowPriority}</span>
+      </div>
     </div>
   );
 }

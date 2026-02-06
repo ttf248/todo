@@ -27,6 +27,9 @@ export function useTodos() {
     total: todos.length,
     completed: todos.filter((t) => t.completed).length,
     pending: todos.filter((t) => !t.completed).length,
+    highPriority: todos.filter((t) => t.priority === 'high').length,
+    mediumPriority: todos.filter((t) => t.priority === 'medium').length,
+    lowPriority: todos.filter((t) => t.priority === 'low').length,
   };
 
   const addTodo = (text: string, priority: Priority) => {

@@ -139,6 +139,12 @@ h1 {
   background: #1a1a1a;
 }
 
+@media (min-width: 640px) {
+  .stats {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
 .stat-item {
   text-align: center;
   color: white;
@@ -242,6 +248,89 @@ h1 {
 
 .priority-tag option {
   font-weight: bold;
+}
+
+/* Priority colors for stats */
+.priority-stat-high span {
+  color: var(--color-danger);
+}
+
+.priority-stat-medium span {
+  color: var(--color-warning);
+}
+
+.priority-stat-low span {
+  color: var(--color-success);
+}
+
+/* Filter Styles */
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+@media (min-width: 640px) {
+  .filters-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.filter-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.priority-filter-group {
+  justify-content: flex-start;
+}
+
+@media (min-width: 640px) {
+  .priority-filter-group {
+    justify-content: flex-end;
+  }
+}
+
+.filter-btn {
+  padding: 10px 16px;
+  background: white;
+  border: var(--border-width) solid var(--color-border);
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--color-border);
+  transition: all 0.1s;
+  text-transform: uppercase;
+}
+
+.filter-btn:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--color-border);
+}
+
+.filter-btn.active {
+  background: var(--color-accent);
+  color: white;
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--color-border);
+}
+
+.filter-btn.priority-high.active {
+  background: var(--color-danger);
+}
+
+.filter-btn.priority-medium.active {
+  background: var(--color-warning);
+  color: var(--color-text);
+}
+
+.filter-btn.priority-low.active {
+  background: var(--color-success);
 }
 
 /* Delete Button */
