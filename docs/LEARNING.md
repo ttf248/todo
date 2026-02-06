@@ -102,14 +102,35 @@ Anthropic 官方设计技能，显著提升前端界面的审美质量。
 
 ### 官方 Skills 仓库
 
-| Skill | 用途 |
-|-------|------|
-| `pdf` | PDF 文档处理 |
-| `pptx` | PowerPoint 生成 |
-| `docx` | Word 文档生成 |
-| `xlsx` | Excel 数据处理 |
-| `webapp-testing` | Web 应用测试 |
-| `mcp-builder` | MCP Server 构建 |
-| `theme-factory` | 主题生成 |
+| 类别 | Skill | 用途 | 典型用法/Prompt |
+|------|-------|------|----------------|
+| **文档处理** | `pdf` | 生成、提取 PDF | `"将最近的周报汇总成一份 PDF 报告"`<br>`"从 invoice.pdf 中提取所有表格并保存为 csv"` |
+| | `pptx` | PPT 生成与编辑 | `"为我的新项目创建一个 10 页的 PPT，包含架构图和排期"`<br>`"根据 README.md 的内容生成一个产品演示幻灯片"` |
+| | `docx` | Word 文档处理 | `"撰写一份软件需求规格说明书 (SRS) 并保存为 docx"`<br>`"优化文档的排版并添加标准页眉页脚"` |
+| | `xlsx` | Excel 表格分析 | `"创建一个预算追踪表，包含自动计算总和的公式"`<br>`"分析 data.csv 并生成一份带有图表的 Excel 报告"` |
+| **开发测试** | `webapp-testing` | Web 自动化测试 | `"对当前的登录流程编写完整的自动化测试用例"` |
+| | `playwright` | 浏览器自动化交互 | `"打开浏览器，登录到 GitHub 并检查我的待处理 PR"`<br>`"截图我的网站在移动端适配下的显示效果"` |
+| | `ios-simulator` | iOS 模拟器操作 | `"在 iOS 模拟器上运行并测试我的新 App 界面"` |
+| | `mcp-builder` | 构建 MCP Server | `"帮我创建一个可以查询本地天气 API 的 MCP Server"` |
+| **设计辅助** | `theme-factory` | UI 主题生成 | `"为这个管理后台生成一套暗黑模式的配色方案，要符合 Material Design"` |
+| | `web-asset-generator` | 生成 Web 资产 | `"基于网站主色调生成一套全尺寸的 Favicon 和 App Icons"` |
+
+### 主流第三方/进阶 Skills
+
+- **`superpowers`**：强制执行 TDD 和规划流。
+  - *场景*：当你希望 Claude 在写代码前先写测试。
+  - *指令*：`"启动 superpowers 模式，按照 TDD 流程重构我的用户认证模块"`
+- **`skill-seekers`**：文档转技能神器。
+  - *场景*：你想让 Claude 学习某个新库（如 `Tailwind v4`）的文档。
+  - *用法*：`npx skill-seekers scan https://tailwindcss.com/docs`
+- **`trail-of-bits-security`**：专业级代码审计。
+  - *场景*：发布前的安全扫描。
+  - *指令*：`"运行安全审计技能，检查代码中是否存在潜在的 SQL 注入或权限绕过漏洞"`
+- **`d3-js`**：高级数据可视化。
+  - *场景*：需要炫酷的动态图表。
+  - *指令*：`"使用 D3.js 技能，将这份 JSON 数据转换为一个交互式的力导向关系图"`
+- **`loki-mode`**：自主创业/项目推进。
+  - *场景*：从零开始构建一个完整的产品。
+  - *指令*：`"激活 Loki 模式，帮我从零规划并实现一个基于 AI 的协作看板"`
 
 官方仓库：[https://github.com/anthropics/skills](https://github.com/anthropics/skills)
