@@ -8,12 +8,16 @@ interface TodoItemProps {
   onUpdatePriority: (id: string, priority: Priority) => void;
   onUpdateText: (id: string, text: string) => void;
   onUpdateDueDate: (id: string, dueDate?: Date) => void;
+  onUpdateTags: (id: string, tags: string[]) => void;
+  allTags: string[];
 }
 
-export function TodoItem({ todo, onToggle, onDelete, onUpdatePriority, onUpdateText, onUpdateDueDate }: TodoItemProps) {
+export function TodoItem({ todo, onToggle, onDelete, onUpdatePriority, onUpdateText, onUpdateDueDate, onUpdateTags, allTags }: TodoItemProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.text);
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showTagEditor, setShowTagEditor] = useState(false);
+  const [newTag, setNewTag] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -113,10 +117,25 @@ export function TodoItem({ todo, onToggle, onDelete, onUpdatePriority, onUpdateT
             📅 {formatDate(todo.dueDate)}
           </span>
         )}
+        {todo.tags.length > 0 && !isEditing && (
+          <div className="todo-tags">
+            {todo.tags.map((tag) => (
+              <span key={tag} className="todo-tag">{tag}</span>
+            ))}
+          </div>
+        )}
       </div>
       <div className="todo-actions">
         {!isEditing && (
           <>
+            <button
+              className="tag-btn"
+              onClick={() => setShowTagEditor(!showTagEditor)}
+              disabled={todo.completed}
+              title="编辑标签"
+            >
+              🏷️
+            </button>
             <button
               className="date-btn"
               onClick={() => setShowDatePicker(!showDatePicker)}
@@ -139,6 +158,7 @@ export function TodoItem({ todo, onToggle, onDelete, onUpdatePriority, onUpdateT
           ×
         </button>
       </div>
+
       {showDatePicker && (
         <div className="date-picker-popup">
           <input
@@ -164,6 +184,72 @@ export function TodoItem({ todo, onToggle, onDelete, onUpdatePriority, onUpdateT
             className="close-date-btn"
             onClick={() => setShowDatePicker(false)}
           >
+            关闭
+          </button>
+        </div>
+      )}
+
+      {showTagEditor && (
+        <div className="tag-editor-popup">
+          <div className="tag-editor-header">编辑标签</div>
+          <div className="current-tags">
+            {todo.tags.map((tag) => (
+              <span key={tag} className="tag selected">
+                {tag}
+                <button
+                  onClick={() =>
+                    onUpdateTags(
+                      todo.id,
+                      todo.tags.filter((t) => t !== tag)
+                    )
+                  }
+                >
+                  ×
+                </button>
+              </span>
+            ))}
+          </div>
+          <div className="available-tags">
+            {allTags
+              .filter((tag) => !todo.tags.includes(tag))
+              .map((tag) => (
+                <button
+                  key={tag}
+                  className="tag-btn-small"
+                  onClick={() => onUpdateTags(todo.id, [...todo.tags, tag])}
+                >
+                  + {tag}
+                </button>
+              ))}
+          </div>
+          <div className="new-tag-row">
+            <input
+              type="text"
+              placeholder="新标签..."
+              value={newTag}
+              onChange={(e) => setNewTag(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter' && newTag.trim()) {
+                  if (!todo.tags.includes(newTag.trim())) {
+                    onUpdateTags(todo.id, [...todo.tags, newTag.trim()]);
+                  }
+                  setNewTag('');
+                }
+              }}
+              autoFocus
+            />
+            <button
+              onClick={() => {
+                if (newTag.trim() && !todo.tags.includes(newTag.trim())) {
+                  onUpdateTags(todo.id, [...todo.tags, newTag.trim()]);
+                  setNewTag('');
+                }
+              }}
+            >
+              添加
+            </button>
+          </div>
+          <button className="close-tag-editor" onClick={() => setShowTagEditor(false)}>
             关闭
           </button>
         </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Todo, TodoStats, Priority } from '../types/todo';
 
 const STORAGE_KEY = 'todos';
@@ -32,7 +32,7 @@ export function useTodos() {
     lowPriority: todos.filter((t) => t.priority === 'low').length,
   };
 
-  const addTodo = (text: string, priority: Priority, dueDate?: Date) => {
+  const addTodo = (text: string, priority: Priority, dueDate?: Date, tags: string[] = []) => {
     if (!text.trim()) return;
 
     const newTodo: Todo = {
@@ -42,6 +42,7 @@ export function useTodos() {
       priority,
       createdAt: new Date(),
       dueDate,
+      tags,
     };
 
     setTodos((prev) => [newTodo, ...prev]);
@@ -84,14 +85,32 @@ export function useTodos() {
     );
   };
 
+  const updateTodoTags = (id: string, tags: string[]) => {
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, tags } : todo
+      )
+    );
+  };
+
+  const allTags = useMemo(() => {
+    const tagSet = new Set<string>();
+    todos.forEach((todo) => {
+      todo.tags.forEach((tag) => tagSet.add(tag));
+    });
+    return Array.from(tagSet).sort();
+  }, [todos]);
+
   return {
     todos,
     stats,
+    allTags,
     addTodo,
     toggleTodo,
     deleteTodo,
     updateTodoPriority,
     updateTodoText,
     updateTodoDueDate,
+    updateTodoTags,
   };
 }

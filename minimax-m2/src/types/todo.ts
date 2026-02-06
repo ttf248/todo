@@ -7,6 +7,7 @@ export interface Todo {
   priority: Priority;
   createdAt: Date;
   dueDate?: Date;
+  tags: string[];
 }
 
 export interface TodoStats {

@@ -556,6 +556,320 @@ h1 {
   position: relative;
 }
 
+/* Tag Button */
+.tag-btn {
+  width: 40px;
+  height: 40px;
+  border: var(--border-width) solid var(--color-border);
+  background: #ba68c8;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--color-border);
+  transition: all 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tag-btn:hover:not(:disabled) {
+  background: #ab47bc;
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--color-border);
+}
+
+.tag-btn:active:not(:disabled) {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+
+.tag-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Todo Tags Display */
+.todo-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.todo-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #e1bee7;
+  border: 2px solid var(--color-border);
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Tag Editor Popup */
+.tag-editor-popup {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: 5px 5px 0 var(--color-border);
+  padding: 15px;
+  min-width: 200px;
+  z-index: 10;
+}
+
+.tag-editor-header {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.current-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+  min-height: 30px;
+}
+
+.available-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+}
+
+.tag-btn-small {
+  padding: 4px 10px;
+  background: #f5f5f5;
+  border: 2px solid var(--color-border);
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--color-border);
+  transition: all 0.1s;
+}
+
+.tag-btn-small:hover {
+  background: #e0e0e0;
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--color-border);
+}
+
+.new-tag-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.new-tag-row input {
+  flex: 1;
+  padding: 8px;
+  border: var(--border-width) solid var(--color-border);
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+}
+
+.new-tag-row button {
+  padding: 8px 12px;
+  background: var(--color-success);
+  color: white;
+  border: var(--border-width) solid var(--color-border);
+  font-family: var(--font-main);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--color-border);
+}
+
+.new-tag-row button:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--color-border);
+}
+
+.close-tag-editor {
+  width: 100%;
+  padding: 8px;
+  background: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  font-family: var(--font-main);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--color-border);
+}
+
+.close-tag-editor:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--color-border);
+}
+
+/* Input Group Tags Section */
+.input-row {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media (min-width: 640px) {
+  .input-row {
+    flex-direction: row;
+  }
+}
+
+.tags-section {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px dashed var(--color-border);
+}
+
+.selected-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.existing-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #e1bee7;
+  border: 2px solid var(--color-border);
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.tag.selected {
+  background: #ba68c8;
+  color: white;
+}
+
+.tag button {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-border);
+  background: white;
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.new-tag-input {
+  display: flex;
+  gap: 8px;
+}
+
+.new-tag-input input {
+  flex: 1;
+  padding: 10px;
+  border: var(--border-width) solid var(--color-border);
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+}
+
+.new-tag-input button {
+  padding: 10px 16px;
+  background: var(--color-accent);
+  color: white;
+  border: var(--border-width) solid var(--color-border);
+  font-family: var(--font-main);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--color-border);
+}
+
+.new-tag-input button:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--color-border);
+}
+
+/* Tag Filter */
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f8f8f8;
+  border: var(--border-width) solid var(--color-border);
+}
+
+.tag-filter-label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.tag-filter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
+}
+
+.tag-filter-btn {
+  padding: 6px 12px;
+  background: white;
+  border: 2px solid var(--color-border);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--color-border);
+  transition: all 0.1s;
+}
+
+.tag-filter-btn:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--color-border);
+}
+
+.tag-filter-btn.active {
+  background: #ba68c8;
+  color: white;
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.clear-tags-btn {
+  padding: 6px 12px;
+  background: var(--color-danger);
+  color: white;
+  border: 2px solid var(--color-border);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--color-border);
+  transition: all 0.1s;
+}
+
+.clear-tags-btn:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--color-border);
+}
+
 /* Empty State Styles */
 .empty-state {
   text-align: center;
