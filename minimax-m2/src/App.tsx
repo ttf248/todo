@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1>待办事项</h1>
+      <h1>Todo List</h1>
       <TodoInput onAdd={addTodo} />
       <TodoStatsView stats={stats} />
       <TodoList
