@@ -1,0 +1,15 @@
+export type Priority = 'high' | 'medium' | 'low';
+
+export interface Todo {
+  id: string;
+  text: string;
+  completed: boolean;
+  priority: Priority;
+  createdAt: Date;
+}
+
+export interface TodoStats {
+  total: number;
+  completed: number;
+  pending: number;
+}
