@@ -1,24 +1,23 @@
-/* App specific styles - Brutalist extensions */
+/* App specific styles - Modern Luxury extensions */
 
 /* Selection highlight */
 ::selection {
-  background: var(--color-warning);
+  background: rgba(201, 168, 108, 0.3);
   color: var(--color-text);
 }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--color-bg);
-  border-left: var(--border-width) solid var(--color-border);
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);
-  border: 2px solid var(--color-bg);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -27,23 +26,11 @@
 
 /* Focus visible outline for accessibility */
 *:focus-visible {
-  outline: 3px solid var(--color-accent);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
 /* App container enhancements */
 .app {
   position: relative;
-}
-
-.app::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  border: var(--border-width) solid var(--color-border);
-  background: transparent;
-  z-index: -1;
 }
