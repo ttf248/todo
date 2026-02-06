@@ -1,12 +1,14 @@
 import { useState, useMemo } from 'react';
-import { useTodos } from './hooks/useTodos';
-import { TodoInput } from './components/TodoInput';
-import { TodoList } from './components/TodoList';
-import { TodoStatsView } from './components/TodoStats';
-import { TodoFilter } from './components/TodoFilter';
-import { PriorityFilter } from './components/PriorityFilter';
-import { TagFilter } from './components/TagFilter';
-import { FilterStatus, FilterPriority } from './types/filter';
+import { useTodos } from './hooks';
+import {
+  TodoInput,
+  TodoList,
+  TodoStatsView,
+  TodoFilter,
+  PriorityFilter,
+  TagFilter,
+} from './components';
+import type { FilterStatus, FilterPriority } from './types';
 import './App.css';
 
 function App() {
