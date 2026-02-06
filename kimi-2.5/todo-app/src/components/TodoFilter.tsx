@@ -13,16 +13,19 @@ const filters: { type: FilterType; label: string }[] = [
 
 export const TodoFilter = ({ filter, onFilterChange }: TodoFilterProps) => {
   return (
-    <div className="filter-container">
-      {filters.map(({ type, label }) => (
-        <button
-          key={type}
-          className={`filter-btn ${filter === type ? 'active' : ''}`}
-          onClick={() => onFilterChange(type)}
-        >
-          {label}
-        </button>
-      ))}
+    <div className="filter-group">
+      <span className="filter-label">状态筛选</span>
+      <div className="filter-container">
+        {filters.map(({ type, label }) => (
+          <button
+            key={type}
+            className={`filter-btn ${filter === type ? 'active' : ''}`}
+            onClick={() => onFilterChange(type)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

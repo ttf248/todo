@@ -33,11 +33,11 @@ function App() {
 
   return (
     <div className="container">
-      <h1>📝 Todo 列表</h1>
+      <h1>TODO LIST</h1>
 
       <TodoInput onAdd={addTodo} />
 
-      <div className="filters-row">
+      <div className="filters-section">
         <TodoFilter filter={filter} onFilterChange={setFilter} />
         <PriorityFilter
           priority={priorityFilter}

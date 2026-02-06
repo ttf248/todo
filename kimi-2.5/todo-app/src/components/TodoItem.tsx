@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import type { Todo } from '../types/todo';
-import { priorityLabels, priorityColors } from '../types/todo';
+import { priorityLabels } from '../types/todo';
 
 interface TodoItemProps {
   todo: Todo;
@@ -30,13 +30,7 @@ export const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
           }
         }}
       />
-      <span
-        className="priority-badge"
-        style={{
-          backgroundColor: priorityColors[todo.priority].bg,
-          color: priorityColors[todo.priority].text
-        }}
-      >
+      <span className={`priority-badge ${todo.priority}`}>
         {priorityLabels[todo.priority]}
       </span>
       <span className="todo-text">{todo.text}</span>
