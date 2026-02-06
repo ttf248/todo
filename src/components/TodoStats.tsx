@@ -1,10 +1,10 @@
-import { TodoStats } from '../types/todo';
+import { TodoStats as TodoStatsType } from '../types/todo';
 
 interface TodoStatsProps {
-  stats: TodoStats;
+  stats: TodoStatsType;
 }
 
-export function TodoStats({ stats }: TodoStatsProps) {
+export function TodoStatsView({ stats }: TodoStatsProps) {
   return (
     <div className="stats">
       <div className="stat-item">

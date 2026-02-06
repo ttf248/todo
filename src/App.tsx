@@ -1,7 +1,7 @@
 import { useTodos } from './hooks/useTodos';
 import { TodoInput } from './components/TodoInput';
 import { TodoList } from './components/TodoList';
-import { TodoStats } from './components/TodoStats';
+import { TodoStatsView } from './components/TodoStats';
 import './App.css';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <div className="app">
       <h1>待办事项</h1>
       <TodoInput onAdd={addTodo} />
-      <TodoStats stats={stats} />
+      <TodoStatsView stats={stats} />
       <TodoList
         todos={todos}
         onToggle={toggleTodo}
