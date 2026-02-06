@@ -6,6 +6,7 @@ export interface Todo {
   completed: boolean;
   priority: Priority;
   createdAt: Date;
+  dueDate?: Date;
 }
 
 export interface TodoStats {

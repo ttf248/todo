@@ -32,7 +32,7 @@ export function useTodos() {
     lowPriority: todos.filter((t) => t.priority === 'low').length,
   };
 
-  const addTodo = (text: string, priority: Priority) => {
+  const addTodo = (text: string, priority: Priority, dueDate?: Date) => {
     if (!text.trim()) return;
 
     const newTodo: Todo = {
@@ -41,6 +41,7 @@ export function useTodos() {
       completed: false,
       priority,
       createdAt: new Date(),
+      dueDate,
     };
 
     setTodos((prev) => [newTodo, ...prev]);
@@ -75,6 +76,14 @@ export function useTodos() {
     );
   };
 
+  const updateTodoDueDate = (id: string, dueDate?: Date) => {
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, dueDate } : todo
+      )
+    );
+  };
+
   return {
     todos,
     stats,
@@ -83,5 +92,6 @@ export function useTodos() {
     deleteTodo,
     updateTodoPriority,
     updateTodoText,
+    updateTodoDueDate,
   };
 }

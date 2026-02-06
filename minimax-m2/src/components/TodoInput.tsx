@@ -2,18 +2,21 @@ import { useState } from 'react';
 import { Priority } from '../types/todo';
 
 interface TodoInputProps {
-  onAdd: (text: string, priority: Priority) => void;
+  onAdd: (text: string, priority: Priority, dueDate?: Date) => void;
 }
 
 export function TodoInput({ onAdd }: TodoInputProps) {
   const [text, setText] = useState('');
   const [priority, setPriority] = useState<Priority>('medium');
+  const [dueDate, setDueDate] = useState('');
 
   const handleSubmit = () => {
     if (!text.trim()) return;
-    onAdd(text, priority);
+    const date = dueDate ? new Date(dueDate) : undefined;
+    onAdd(text, priority, date);
     setText('');
     setPriority('medium');
+    setDueDate('');
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -40,6 +43,13 @@ export function TodoInput({ onAdd }: TodoInputProps) {
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyPress={handleKeyPress}
+      />
+      <input
+        type="date"
+        className="date-input"
+        value={dueDate}
+        onChange={(e) => setDueDate(e.target.value)}
+        placeholder="截止日期"
       />
       <button className="add-btn" onClick={handleSubmit}>
         添加
